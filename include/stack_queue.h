@@ -483,15 +483,22 @@ public:
 		throw logic_error("Queue is empty");
 	}
 
-	T back()
+    T back()
+    {
+        if (!pMem[1].isEmpty()) 
+        {
+            return pMem[1].top();
+        }
 
-	{
-		if (!pMem[1].isEmpty())
+        else
+        {
+            if (!pMem[0].isEmpty())
+            {
+                return pMem[0].top();
+            }
+        }
 
-		{
-			return pMem[1].top();
-		}
+        throw logic_error("Queue is empty");
+    }
 
-		throw logic_error("Queue is empty");
-	}
 };
