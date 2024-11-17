@@ -485,23 +485,22 @@ public:
 
     T back()
     {
-        if (!pMem[0].isEmpty())
-        {
-            T arr{ };
-
-            while (!pMem[0].isEmpty())
-            {
-               arr = pMem[0].top();
-
-               pMem[0].pop();
-            }
-            return arr;
-        }
-
         if (!pMem[1].isEmpty())
 
         {
             return pMem[1].top();
+        } 
+
+        if (!pMem[0].isEmpty())
+        {
+
+            while (!pMem[0].isEmpty())
+            {
+                pMem[1].push(pMem[0].top());
+
+               pMem[0].pop();
+
+            }
         }
 
         throw logic_error("Queue is empty");
